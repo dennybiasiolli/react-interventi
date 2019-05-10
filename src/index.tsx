@@ -1,12 +1,23 @@
+import CssBaseline from '@material-ui/core/CssBaseline';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
+import 'typeface-roboto';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { App } from './App';
+import './services/interceptors';
+import { store } from './store';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const mainComponent = (
+  <React.Fragment>
+    <CssBaseline />
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>
+  </React.Fragment>
+);
+
+ReactDOM.render(mainComponent, document.getElementById('root'));
