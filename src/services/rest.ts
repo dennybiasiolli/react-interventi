@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import { JwtToken } from '../models/JwtToken';
+import { PuntoVendita } from '../models/PuntoVendita';
 import { UserInfo } from '../models/UserInfo';
 import { store } from '../store';
 import {
@@ -8,6 +9,22 @@ import {
   setUserInfo,
   setUserInfoLoading,
 } from '../store/reducers/auth-actions';
+import {
+  setPuntiVendita,
+  setPuntiVenditaLoading,
+} from '../store/reducers/interventi-actions';
+
+export async function getPuntiVendita(): Promise<PuntoVendita[]> {
+  let retVal: PuntoVendita[] = [];
+  store.dispatch(setPuntiVenditaLoading(true));
+  try {
+    const { data } = await axios.get('/punti-vendita/');
+    retVal = data;
+  } finally {
+    store.dispatch(setPuntiVendita(retVal));
+  }
+  return retVal;
+}
 
 export async function getUserInfo(): Promise<UserInfo | undefined> {
   try {
