@@ -1,6 +1,6 @@
 import { Button, Container, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import React, { FormEvent } from 'react';
+import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 
 import { getUserInfo, login } from '../services/rest';
@@ -8,23 +8,24 @@ import { getUserInfo, login } from '../services/rest';
 const useStyles = makeStyles(theme => ({
   form: {
     marginTop: theme.spacing(1),
-    width: '100%' // Fix IE 11 issue.
+    width: '100%', // Fix IE 11 issue.
   },
   paper: {
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'column',
-    marginTop: theme.spacing(8)
+    marginTop: theme.spacing(8),
   },
   submit: {
-    margin: theme.spacing(3, 0, 2)
-  }
+    margin: theme.spacing(3, 0, 2),
+  },
 }));
 
+// tslint:disable-next-line: function-name
 function LoginBase({ history }: RouteComponentProps) {
   const [state, setState] = React.useState({
     password: '',
-    username: ''
+    username: '',
   });
   const classes = useStyles();
   return (
@@ -77,7 +78,7 @@ function LoginBase({ history }: RouteComponentProps) {
     });
   }
 
-  async function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     try {
       const res = await login(state.username, state.password);
@@ -91,4 +92,5 @@ function LoginBase({ history }: RouteComponentProps) {
   }
 }
 
+// tslint:disable-next-line: variable-name
 export const Login = withRouter(LoginBase);

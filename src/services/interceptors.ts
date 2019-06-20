@@ -24,7 +24,7 @@ export function forceLogout() {
   lastRetry = undefined;
 }
 
-axios.interceptors.response.use(undefined, async err => {
+axios.interceptors.response.use(undefined, async (err) => {
   if (err.response.config.url.includes('/token/')) {
     throw err;
   }

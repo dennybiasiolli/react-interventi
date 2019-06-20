@@ -1,9 +1,10 @@
 import { Button, Container } from '@material-ui/core';
-import React from 'react';
+import * as React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 
 import { forceLogout } from '../services/interceptors';
 
+// tslint:disable-next-line: function-name
 export function Home() {
   return (
     <Container component="main">

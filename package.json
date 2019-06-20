@@ -28,7 +28,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "tslint -c tslint.json src/**/*.{ts,tsx} --fix --format verbose"
+    "lint": "tslint -c tslint.json src/**/*.{ts,tsx} --project tsconfig.json --format verbose"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -49,6 +49,7 @@
     "prettier": "^1.18.2",
     "redux-devtools-extension": "^2.13.8",
     "tslint": "^5.17.0",
+    "tslint-config-airbnb": "^5.11.1",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
     "tslint-react": "^4.0.0"

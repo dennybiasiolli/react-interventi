@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router';
 import { bindActionCreators, Dispatch } from 'redux';
@@ -18,10 +18,11 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
 
 export interface AppProps
   extends ReturnType<typeof mapStateToProps>,
-    ReturnType<typeof mapDispatchToProps> {}
+  ReturnType<typeof mapDispatchToProps> { }
 
+// tslint:disable-next-line: function-name
 function AppBase({ userInfoLoading, userInfo }: AppProps) {
-  useEffect(() => {
+  React.useEffect(() => {
     getUserInfo();
   }, []);
 
@@ -36,14 +37,15 @@ function AppBase({ userInfoLoading, userInfo }: AppProps) {
   function getMainComponent() {
     if (userInfoLoading) {
       return <div>LOADING</div>;
-    } else if (userInfo) {
-      return <Home />;
-    } else {
-      return <Redirect to="/login" />;
     }
+    if (userInfo) {
+      return <Home />;
+    }
+    return <Redirect to="/login" />;
   }
 }
 
+// tslint:disable-next-line: variable-name
 export const App = connect(
   mapStateToProps,
   mapDispatchToProps

@@ -23,7 +23,7 @@ export async function getUserInfo(): Promise<UserInfo | undefined> {
 
 export async function login(
   username: string,
-  password: string
+  password: string,
 ): Promise<JwtToken | undefined> {
   try {
     const res = await axios.post('/token/', {
@@ -39,7 +39,7 @@ export async function login(
 }
 
 export async function refreshToken(
-  refreshTokenStr: string
+  refreshTokenStr: string,
 ): Promise<JwtToken | undefined> {
   try {
     const res = await axios.post('/token/refresh/', {

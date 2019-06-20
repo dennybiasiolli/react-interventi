@@ -14,5 +14,5 @@ export type RootAction = AuthActionTypes;
 export const store = createStore<RootState, RootAction, {}, {}>(
   rootReducer,
   undefined,
-  composeWithDevTools()
+  composeWithDevTools(),
 );
